@@ -29,7 +29,7 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
 
     @Test
     public void testInsertOrderInfo() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1; i++) {
             long userId = 4*i;
 //            long orderId = KeyGenerator.getKey();
             long orderId = 4*i + 1;
@@ -53,8 +53,8 @@ public class SnowalkerShardingjdbcDemoApplicationTests {
     public void testQueryList() {
         List<OrderInfo> list = new ArrayList<>();
         OrderInfo orderInfo = new OrderInfo();
-        orderInfo.setOrderId(2l);
-        orderInfo.setUserId(2l);
+//        orderInfo.setOrderId(2L); //表2%2=0
+//        orderInfo.setUserId(2L); //库2%4=2 db_02.t_order_0000
         list = orderService.queryOrderInfoList(orderInfo);
         LOGGER.info(list.toString());
     }

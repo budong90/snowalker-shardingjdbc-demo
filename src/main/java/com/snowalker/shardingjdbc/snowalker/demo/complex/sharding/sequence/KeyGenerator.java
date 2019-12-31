@@ -109,6 +109,12 @@ public class KeyGenerator {
         return getDistributedId(length, DEFAULT_HOST_NUM);
     }
 
+    public static void main(String[] args) {
+        KeyGenerator gen = new KeyGenerator();
+        String rt = gen.getDistributedId(2);
+        System.out.println(rt);
+    }
+
     /**
      * 适配分布式环境，根据主机名生成id
      * 分布式环境下，如：Kubernates云环境下，集群内docker容器名是唯一的

@@ -50,6 +50,7 @@ public class RedisSequenceGenerator implements SequenceGenerator {
 
         String increKey = new StringBuilder(LOGIC_TABLE_NAME).append(redisKeySuffix).toString();
         long sequenceId = stringRedisTemplate.opsForValue().increment(increKey);
+        System.out.println(String.format("increKey=%s,sequenceId=%d", increKey, sequenceId));
         //达到指定值重置序列号，预留后10000个id以便并发时缓冲
         if (sequenceId == sequence_max) {
             stringRedisTemplate.delete(increKey);

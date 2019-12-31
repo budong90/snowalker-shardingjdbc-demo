@@ -100,7 +100,7 @@ public class StringUtil {
     public static long getDbIndexByMod(Object obj,int dbCount,int tbCount) {
         long tbRange = getModValue(obj, tbCount);
         BigDecimal bc = new BigDecimal(tbRange);
-        BigDecimal[] results = bc.divideAndRemainder(new BigDecimal(dbCount/tbCount));
+        BigDecimal[] results = bc.divideAndRemainder(new BigDecimal(dbCount).divide(new BigDecimal(tbCount)));
         return (long)results[0].intValue();
     }
 
@@ -114,7 +114,7 @@ public class StringUtil {
     public static long getTbIndexByMod(Object obj,int dbCount,int tbCount) {
         long tbRange = getModValue(obj, tbCount);
         BigDecimal bc = new BigDecimal(tbRange);
-        BigDecimal[] results = bc.divideAndRemainder(new BigDecimal(tbCount/dbCount));
+        BigDecimal[] results = bc.divideAndRemainder(new BigDecimal(tbCount).divide(new BigDecimal(dbCount)));
         return (long)results[1].intValue();
     }
 }

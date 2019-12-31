@@ -11,7 +11,14 @@
             t.order_id as orderId,
             t.user_name as userName
         from t_order t
-        where t.user_id=#{userId}
+        <where>
+            <if test="userId != null">
+                and t.user_id=#{userId}
+            </if>
+        </where>
+        <if test="orderId != null">
+            and t.order_id = #{orderId}
+        </if>
 	</select>
 
     <select id="queryOrderInfoByOrderId" parameterType="com.snowalker.shardingjdbc.snowalker.demo.entity.OrderInfo"
